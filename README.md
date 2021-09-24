@@ -8,11 +8,13 @@ This is a demo website built using django
   
   git clone https://github.com/harshith-byte/demo_spacex_website.git
   
-2. acivate virtual environment
+2. activate virtual environment
 
   source bin/activate
 
-3. run docker-compose up 
+3. run 
+  
+  docker-compose up 
 
 4. in any browser go to localhost
 
