@@ -4,7 +4,7 @@ This is a demo website built using django
 
 ## Installation (Linux)
 
-1. pull down the file to local machine 
+1. pull down the folder to local machine 
   
   git clone https://github.com/harshith-byte/demo_spacex_website.git
   
