@@ -2,8 +2,8 @@
 
 This is a demo website built using django 
 
-##Installation 
+#Installation 
 
-###1.windows
+#1.windows
 
 
