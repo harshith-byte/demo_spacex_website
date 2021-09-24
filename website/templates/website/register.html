@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Register</title>
+        <style>
+            body{
+                background: url(https://external-preview.redd.it/jW5IN36JcowGw0by4vUDgPkABaTf3Q6gSO4oswd38zk.png?auto=webp&s=878fb06bc4ef9a8adf98d61053fc1a9370148b86);
+                margin: 0%;
+                padding: 0%;
+                background-size: cover;
+                width: 60%;
+            }
+            .registerform{
+                position:absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                width: 500px;
+                padding: 2rem;
+                border-color: white;
+                border-radius: 12px;
+                border-style: solid;
+                text-align: center;
+            }
+
+            input{
+                top: 20%;
+                width: 70%;
+                padding: 0.8rem;
+                border-radius: 20px;
+                border: none;
+            }
+
+            button{
+                width: 20%;
+                padding: .6rem;
+                border: none;
+                border-radius: 5px;
+            }
+           .registerform h1{
+               color: white;
+               font-family: Arial;
+               font-size: 2rem;
+               font-weight: 100;
+           }
+           .h1{
+               color: white;
+               font-size: small;
+           }
+           .error{
+               background-color: white;
+           }
+        </style>
+    </head>
+
+    <body>
+        
+       
+        <div class="registerform">
+            <h1> Register Form</h1><br>
+            <form action="" method="POST" >
+                {% csrf_token %}
+              
+               {{form.username}}
+               <br>
+                <br><br>
+               {{form.email}}
+               <br>
+               <br><br>
+               {{form.password1}}
+               <br>
+              <br><br>
+               {{form.password2}}
+               <br><br>
+               <div class="error">{{form.errors}}</div>
+               <input type="submit" name="create user">
+            </form>
+        </div>
+        <script>
+
+            var form_fields=document.getElementsByTagName('input')
+            form_fields[1].placeholder='Username';
+            form_fields[2].placeholder='Email';
+            form_fields[3].placeholder='Password';
+            form_fields[4].placeholder='Enter password Again';
+
+            for(var field in form_fields){
+                form_fields[field].className+='form-control'
+            }
+        </script>
+    </body>
+</html>

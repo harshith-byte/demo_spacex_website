@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>
+            Sign In
+        </title>
+
+
+        <style>
+            #myVideo {
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                max-height: 150%;
+                max-width:  150%;
+}
+            body{
+                margin: 0%;
+                padding: 0%;
+                background-size: cover;
+                width: 100%;
+            
+               
+            }
+            .registerform{
+                position:absolute;
+                top: 40%;
+                left:20%;
+                transform: translate(-50%,-50%);
+                width: 400px;
+                padding: 2rem;
+                
+                text-align: center;
+            }
+
+            input{
+                top: 20%;
+                width: 70%;
+                padding: 0.8rem;
+                border-radius: 20px;
+                border: none;
+            }
+
+            button{
+                width: 20%;
+                padding: .6rem;
+                border: none;
+                border-radius: 5px;
+            }
+           .registerform h1{
+               color: white;
+               font-family: Arial;
+               font-size: 2rem;
+               font-weight: 100;
+           }
+        </style>
+    </head>
+    <body>
+        <video autoplay muted loop id="myVideo">
+            <source src="{% static "yt1s.com - Crew Dragon Animation_1080p.mp4" %}" type="video/mp4">
+          </video>
+        
+        <div class="registerform">
+            <h1> Sign In</h1><br>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username" class="form-control">
+                <br><br><br>
+                <input type="text" name="password" placeholder="password" class="form-control">
+                <br><br><br>
+                {% for message in messages %}
+                <p style="color: white;">{{message}}</p>
+                {% endfor %}
+                <button><input type="submit" value="login" style="text-align: center;"></button>
+                
+            </form>
+            
+        </div>
+        <script>
+            var form_fields=document.getElementsByTagName('input')
+            form_fields[1].placeholder='Username';
+            form_fields[2].placeholder='password';
+
+            for(var field in form_fields){
+                form_fields[field].className+='form-control'
+            }
+        </script>
+    </body>
+</html>
