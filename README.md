@@ -12,7 +12,9 @@ This is a demo website built using django
 
   source bin/activate
 
-3. run 
+3. run (in terminal)
+
+  docker-compose build
   
   docker-compose up 
 
