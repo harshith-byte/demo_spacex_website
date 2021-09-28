@@ -27,6 +27,7 @@ def registers(request):
 def signin(request):
     form=createuser()
     content={'form':form}
+    qs=register.objects.all()
     if request.method=='POST':
         username=request.POST.get('username')
         password=request.POST.get('password')

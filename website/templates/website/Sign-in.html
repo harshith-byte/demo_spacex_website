@@ -67,7 +67,7 @@
                 {% csrf_token %}
                 <input type="text" name="username" placeholder="Username" class="form-control">
                 <br><br><br>
-                <input type="text" name="password" placeholder="password" class="form-control">
+                <input type="password" name="password" placeholder="password" class="form-control">
                 <br><br><br>
                 {% for message in messages %}
                 <p style="color: white;">{{message}}</p>
