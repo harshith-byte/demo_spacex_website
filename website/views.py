@@ -34,7 +34,8 @@ def registers(request):
 def signin(request):
     if request.method=='POST':
         return Response({"data":"hi"})
-    return render(request,'website/signin/')
+    return render(request,'website/signin.html')
+
 def auth(request):
 
     return Response({})
