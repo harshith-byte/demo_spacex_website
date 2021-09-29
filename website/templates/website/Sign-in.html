@@ -58,33 +58,47 @@
     </head>
     <body>
         <video autoplay muted loop id="myVideo">
-            <source src="{% static "yt1s.com - Crew Dragon Animation_1080p.mp4" %}" type="video/mp4">
+            <source src="{% static 'yt1s.com - Crew Dragon Animation_1080p.mp4' %}" type="video/mp4">
           </video>
         
         <div class="registerform">
             <h1> Sign In</h1><br>
-            <form action="" method="POST">
+            <form method="POST" id="test">
                 {% csrf_token %}
-                <input type="text" name="username" placeholder="Username" class="form-control">
+                <input type="text" id="username" name="username" placeholder="Username" class="form-control">
                 <br><br><br>
-                <input type="password" name="password" placeholder="password" class="form-control">
+                <input type="password" id="password" name="password" placeholder="password" class="form-control">
                 <br><br><br>
                 {% for message in messages %}
                 <p style="color: white;">{{message}}</p>
                 {% endfor %}
-                <button><input type="submit" value="login" style="text-align: center;"></button>
-                
+                <button><input type="button" value="login" style="text-align: center;" onclick="loadmsg()"></button>
+                <p id="msg"></p>
             </form>
             
         </div>
-        <script>
-            var form_fields=document.getElementsByTagName('input')
-            form_fields[1].placeholder='Username';
-            form_fields[2].placeholder='password';
 
-            for(var field in form_fields){
-                form_fields[field].className+='form-control'
-            }
-        </script>
     </body>
+    <script>
+        function loadmsg() {
+        const form = document.getElementById('test');
+        let formData = new FormData();
+        formData.append('username', form.elements['username'].value);
+        formData.append('password', form.elements['password'].value);
+
+        fetch('http://127.0.0.1:8000/signin/', {
+            body: formData,
+            method: 'POST',
+        })
+            .then(function (response) {
+                return response.json()
+            })
+            .then((responseJson) => {
+                document.getElementById("msg").innerHTML = responseJson["message"]
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        }
+    </script>
 </html>
