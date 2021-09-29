@@ -1,5 +1,11 @@
+from website.serializers import registerSerializer
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.authtoken.models import Token
+from rest_framework.decorators import api_view
+
+from django.http import HttpResponse, response
 from django.contrib.auth.forms import UserCreationForm, UsernameField
 from .forms import *
 from django.contrib import messages
@@ -24,22 +30,15 @@ def registers(request):
     content={'form':form}
     return render(request,'website/register.html',content)
 
-def signin(request):
-    form=createuser()
-    content={'form':form}
-    if request.method=='POST':
-        username=request.POST.get('username')
-        password=request.POST.get('password')
 
-        user=authenticate(request,username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('main')
-        else :
-            messages.info(request,'username or password is incorrect')
-            
-    
-    return render(request,'website/Sign-in.html',content)
+def signin(request):
+    if request.method=='POST':
+        return Response({"data":"hi"})
+    return render(request,'website/Sign-in.html')
+
+def auth(request):
+
+    return Response({})
 
 def logoutuser(request):
     logout(request)
